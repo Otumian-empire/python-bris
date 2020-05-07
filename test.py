@@ -4,6 +4,7 @@ from unittest import TestCase, main as unittest_main
 from businfo import busInfo
 from driverinfo import driverInfo
 from sparepartinfo import sparePartInfo
+from mechanicinfo import mechanicInfo
 
 
 class busInfoTest(TestCase):
@@ -38,7 +39,28 @@ class driverinfoTest(TestCase):
 
 
 class sparePartInfoTest(TestCase):
-    pass
+    some_spare_part = sparePartInfo(
+        "Tube", "shapes the tyre when inflated", 12.00)
+
+    def test_name(self):
+        self.assertEqual(self.some_spare_part.getName(), "Tube")
+
+    def test_desciption(self):
+        self.assertEqual(self.some_spare_part.getDescription(),
+                         "shapes the tyre when inflated")
+
+    def test_price(self):
+        self.assertEqual(self.some_spare_part.getPrice(), 12.00)
+
+
+class mechanicInfoTest(TestCase):
+    some_mechanic = mechanicInfo("Daniel Hanni", 23.00)
+
+    def test_name(self):
+        self.assertEqual(self.some_mechanic.getName(), "Daniel Hanni")
+
+    def test_salary(self):
+        self.assertEqual(self.some_mechanic.getSalary(), 23.00)
 
 
 if __name__ == '__main__':
